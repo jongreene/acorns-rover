@@ -1,0 +1,4 @@
+set(SOURCES
+        ${SOURCES}
+        ${PLATFORM_DIR_PATH}/core/ALS31300/ALS31300.cpp
+)

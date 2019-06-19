@@ -4,7 +4,7 @@ if(NOT EXISTS "${PLATFORM_DIR_PATH}/lib/mbed-os/sources")
 endif()
 
 message ("called")
-if(NOT EXISTS "${PLATFORM_DIR_PATH}/lib/mbed-os/sources/${MBED_RELEASE_VERISON}")
+if(NOT EXISTS "${PLATFORM_DIR_PATH}/lib/mbed-os/sources/mbed-os-${MBED_RELEASE_VERISON}")
   execute_process(COMMAND mkdir "${PLATFORM_DIR_PATH}/lib/mbed-os/sources/mbed-os-${MBED_RELEASE_VERISON}")
 endif()
 
@@ -20,6 +20,9 @@ if(NOT EXISTS "${MBED_SUBMODULE_PATH}/platform")
     execute_process(COMMAND git checkout mbed-os-${MBED_RELEASE_VERISON}
                     WORKING_DIRECTORY ${MBED_SUBMODULE_PATH})
 
+    if(EXISTS "${PLATFORM_DIR_PATH}/tools/patches/mbed/${MBED_RELEASE_VERISON}")
+        include(${PLATFORM_DIR_PATH}/tools/patches/mbed/${MBED_RELEASE_VERISON}/patch.cmake)
+    endif()
 
 endif()
 

@@ -1,0 +1,16 @@
+@@ -19,13 +19,9 @@
+  * heap and the page heap in uVisor applications. */
+ HEAP_SIZE = 0x6000;
+ 
+-#if !defined(MBED_APP_START)
+-  #define MBED_APP_START 0x00000000
+-#endif
++MBED_APP_START = 0x00000000;
+ 
+-#if !defined(MBED_APP_SIZE)
+-  #define MBED_APP_SIZE 1048576
+-#endif
++MBED_APP_SIZE = 1048576;
+ 
+ MEMORY
+ {

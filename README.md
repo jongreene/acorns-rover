@@ -4,7 +4,7 @@
 
 ## Initial setup
 ### Cloning
-> When cloning this repo...
+> To clone this project, open a terminal where you want the repository to reside. Then enter git clone https://github.com/jongreene/semi-autonomous-rover.git and hit return.
 #### Cmake build system and it's dependencies
 > At runtime, the cmake build system will automatically download a local copy of ARM GNU toolchain as well as a Mbed OS. The toolchain will be configured to be used for compilation. The user-specified version of Mbed OS will be checked out. Once all of the resources have been downloaded, all relavent patches are applied to third-party resources are applied.
 

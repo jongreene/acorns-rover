@@ -1,5 +1,5 @@
 # semi-autonomous-rover
-![Rover](https://drive.google.com/open?id=1HfdVq7Y7nlsGppn59cxNvxTAesCnZB_g)
+![Rover](https://drive.google.com/file/d/1HfdVq7Y7nlsGppn59cxNvxTAesCnZB_g/preview)
 ### Command Processing
 ...
 

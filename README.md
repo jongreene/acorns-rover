@@ -1,7 +1,7 @@
 # Semi-Autonomous Rover (initial development phase)
 This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
 
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="300" title="Rover on foam pad"></img>
+<img src="https://github.com/jongreene/projects-media/blob/master/acorns/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98.jpeg?raw=true" width="300" title="Rover on foam pad"></img>
 
 Setup
 ---
@@ -40,7 +40,7 @@ From the same terminal (in the REEASE directory):
 
 First attach you programmer to the development board and supply the board power. Shown below.
 
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/board_dev_setup_zpsaitrwxb9.jpg" title="Rover on foam pad"></img>
+<img src="https://github.com/jongreene/projects-media/blob/master/mbed-framework/board_dev_setup.jpg?raw=true" title="Rover on foam pad"></img>
 
 From a terminal pointed at the build directory, enter the commands below.
 ```bash
@@ -64,15 +64,15 @@ The rover is setup to work seamlessly with [this](https://www.adafruit.com/produ
 ##### Setup
 Below you will find images that will guide you through setting up a UART connection between the Giant Gecko and a PC running CuteCom.
 
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/UART_wiring_zpserzurxey.jpg" title="Rover on foam pad"></img>
+<img src="https://github.com/jongreene/projects-media/blob/master/mbed-framework/UART_wiring.jpg?raw=true" title="Rover on foam pad"></img>
 
 > Connection of the UART-to-USB adapter.
 
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/cutecom_settings_zps7ymhflo8.jpg" title="Rover on foam pad"></img>
+<img src="https://github.com/jongreene/projects-media/blob/master/mbed-framework/cutecom_settings.jpg?raw=true" title="Rover on foam pad"></img>
 
 > CuteCom using the rover's default baud rate of 9600bps.
 
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/cutecom_example_zpsh9ew7y6w.jpg" title="Rover on foam pad"></img>
+<img src="https://github.com/jongreene/projects-media/blob/master/mbed-framework/cutecom_example.jpg?raw=true" title="Rover on foam pad"></img>
 
 > Example usage of commands
 

@@ -1,4 +1,4 @@
-# semi-autonomous-rover
+# Semi-Autonomous Rover
 ![Rover](https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg)
 ### Command Processing
 ...

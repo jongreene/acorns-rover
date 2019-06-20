@@ -1,5 +1,5 @@
 # Semi-Autonomous Rover
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="350" title="hover text"></img>
+<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="350" title="Rover on foam pad"></img>
 ### Command Processing
 ...
 

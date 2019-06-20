@@ -1,5 +1,7 @@
 <img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="250" title="Rover on foam pad"></img>
 # Semi-Autonomous Rover
+> At the heart of this bluetooth enable rover is a Giant Gecko STK3700 development board. This board drives four independent pwm motor drivers, handles UART communication (verified up to 115200 baud), and samples external compass and magnetometer data from custom breakout boards. Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.
+
 ## Downloading and Compiling
 ...
 

@@ -29,7 +29,7 @@
   <li>command stopped: {"notification":"payload":{"return_string":"error: command is not running"}}</li>
   <li>queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}</li>
 </ul>
-### Creating new commands
+<h3>Creating new commands</h3>
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.
 
 ### Communication

@@ -5,17 +5,18 @@ This highly configurable, bluetooth enabled rover, is controlled by a Giant Geck
 
 Setup
 ---
-If you follow this guide, setup should be a fairly straight forward process.
-
+Following this guide should be fairly straight forward as long as you have the following tools installed:
+- [CMake](https://cmake.org/download/) 
+- [J-Link Software](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack)
 ##### Cloning
-> To clone this project, open a terminal and navigate to where you want the repository to reside. Now, enter the command below.
+Open a terminal and navigate to where you want the repository to reside. From the terminal enter the command below.
 ```bash 
   # clone the repository
   $ git clone https://github.com/jongreene/semi-autonomous-rover.git
 ```
 
 ##### Compiling
-Before compiling, you must prepare the project. From the root of the project open a terminal and enter the commands below.
+Before compiling, you must prepare the project. From the root of the repository open a terminal and enter the commands below.
 ```bash
   # create a RELEASE directory
   $ mkdir RELEASE
@@ -23,7 +24,7 @@ Before compiling, you must prepare the project. From the root of the project ope
   # enter that directory
   $ cd RELEASE
 ```
-The next step is to generate build files. 
+Next we'll generate build files. 
 > The first time you run cmake it will take substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. 
 From the RELEASE directory, enter the commands below.
 ```bash
@@ -37,7 +38,7 @@ From the RELEASE directory, enter the commands below.
 ##### Flashing
 > I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board.
 
-Follow the commands below from a terminal pointed at the build directory.
+From a terminal pointed at the build directory, enter the commands below.
 ```bash
   # connect to board
   $ JLinkExe -device EFM32GG380F1024 -if SWD -speed 4000
@@ -88,6 +89,6 @@ There are two types of responses that can be expected when issuing a command.
 
 Customization
 ---
-This project is open source, so customization is absoultely possible and encouraged. The easiest place to start is by creating some custom commands. You'll find that it's surprisingly easy to add new functionality, once you have your development environment configured.
+This project is open source, so customization is absoultely possible and encouraged. The easiest place to start is by creating some custom commands and calling them over UART. You'll find that it's surprisingly easy to add new functionality, once you have your development environment configured.
 ##### Creating commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.

@@ -1,7 +1,7 @@
-<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="250" title="Rover on foam pad"></img>
 # Semi-Autonomous Rover
-> This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
-
+> This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.  
+<img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="250" title="Rover on foam pad"></img>
+---
 ## Setup
 #### Cloning
 > To clone this project, open a terminal and navigate to where you want the repository to reside. Now, enter the command below.
@@ -40,6 +40,7 @@ $ r
 $ g
 ```
 > The board should now be executing the binary. This can be tested by sending it a UART command (described below) and verifying you get a response.
+---
 ## Communication
 ##### UART setup
 > The rover, by default, is configured to send and receive data at 9600 baud.
@@ -62,5 +63,7 @@ There are two types of responses that can be expected when issuing a command.
 * command running: {"notification":"payload":{"return_string":"error: command is already running"}}
 * command stopped: {"notification":"payload":{"return_string":"error: command is not running"}}
 * queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}
+---
+## Customization
 #### Creating commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.

@@ -9,10 +9,14 @@
 > At runtime, the cmake build system will automatically download a local copy of ARM GNU toolchain as well as a Mbed OS. The toolchain will be configured to be used for compilation. The user-specified version of Mbed OS will be checked out. Once all of the resources have been downloaded, all relavent patches are applied to third-party resources are applied.
 
 ## Commands
+### Calling already defined commands
+> The command format is as simple as: "{command_name,param1,param2,...}" </br>
+
+
+### New Commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.
 
-### Callable command execution
-...
+
 
 ### Communication
 ...

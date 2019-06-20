@@ -2,7 +2,7 @@
 # Semi-Autonomous Rover
 > This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
 
-### Initial setup
+## Setup
 #### Cloning
 > To clone this project, open a terminal and navigate to where you want the repository to reside. Now, enter the command below.
 ```bash
@@ -26,9 +26,21 @@ $ cmake ..
 # compile STK3700 binary
 $ make
 ```
-##### Flashing the STK3700
-> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. 
-## Communicating with the rover
+#### Flashing the binary
+> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. Follow the commands below from a terminal pointed at the build directory.
+```bash
+# connect to board
+$ JLinkExe -device EFM32GG380F1024 -if SWD -speed 4000 -CommanderScript board.jlink
+
+# compile STK3700 binary
+$ loadbin bin/semi-autonomous-rover.bin, 0x0
+
+# reset and start the board
+$ r
+$ g
+```
+> The board should now be executing the binary. This can be tested by sending it a UART command (described below) and verifying you get a response.
+## Communication
 ### Setting up UART
 > The rover is currently configured to send and receive data at 9600 baud.
 ### Command overview

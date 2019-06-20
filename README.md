@@ -1,4 +1,4 @@
-# Semi-Autonomous Rover (under construction)
+# Semi-Autonomous Rover (initial development phase)
 This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
 
 <img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="300" title="Rover on foam pad"></img>

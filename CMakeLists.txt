@@ -6,7 +6,7 @@ set(PLATFORM_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 set(MBED_TOP_DIR "${PLATFORM_ROOT}/lib/mbed-os")
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/tools/CMakeModules/gcc_arm_toolchain.cmake")
 
-project(remote_control_car)
+project(semi-autonomous-rover)
 
 link_directories(${MBED_TOP_DIR}/libs/EFM32GG_STK3700)
 

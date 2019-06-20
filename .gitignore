@@ -2,3 +2,4 @@ lib/mbed-os/sources
 tools/arm-gcc-toolchain
 RELEASE
 DEBUG
+cmake-build-debug

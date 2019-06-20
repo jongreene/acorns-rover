@@ -1,5 +1,6 @@
 #include "mbed.h"
-#include "program_main.h"
+#include "PlatformInterface.h"
+#include "Commands.h"
 
 //// Required to fix link error inside arm mbed-os
 // fpv4-sp/softfp/libc.a(lib_a-signalr.o): In function `_getpid_r'

@@ -32,7 +32,7 @@ set(SOURCES
         ${SOURCES}
         src/main.cpp
         src/Commands.cpp
-        src/UARTHandler.cpp
+        core/command-dispatcher/src/UARTHandler.cpp
         core/command-dispatcher/src/PlatformInterface.cpp
 )
 

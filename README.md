@@ -8,13 +8,12 @@
 ### Compiling
 > In order to compile, you must first create a folder in the root of the directory called "RELEASE" (for the time being). </br>Open a terminal and cd into that directory.
 </br>Now issue the command: ?>cmake ..
-</br>
+</br>Wait for CMake to complete generating the build files.
+</br>Now issue the command: ?>make
+### Flashing the STK3700
+> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. 
 #### Resolving dependencies
 > At runtime, the cmake build system will automatically download a local copy of the ARM GNU toolchain as well as Mbed OS. The downloaded toolchain will be linked and configured to be used when compiling. The downloaded copy of Mbed OS will be switched to the version defined in the root CMakeLists.txt. Once all of the resources have been downloaded, any and all relavent patches are then applied to the third-party resources.
-
-
-### Flashing the STK3700
-
 ## Commands
 ### Command format
 > {command_name,param1,param2,...}

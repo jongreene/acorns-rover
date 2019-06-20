@@ -5,22 +5,22 @@
 ### Initial setup
 ##### Cloning
 > To clone this project, open a terminal where you want the repository to reside. Then enter git clone https://github.com/jongreene/semi-autonomous-rover.git and hit return.
-##### Dependencies
-> At runtime, the cmake build system will automatically download a local copy of the ARM GNU toolchain as well as Mbed OS. The downloaded toolchain will be linked and configured to be used when compiling. The downloaded copy of Mbed OS will be switched to the version defined in the root CMakeLists.txt. Once all of the resources have been downloaded, any and all relavent patches are then applied to the third-party resources.
-##### Compiling
-> To compile, follow the directions below from a terminal pointed at the root of the project.
+#### Compiling
+> Before compiling, you must prepare the project. From the root of the project open a terminal and enter the commands below.
 ```bash
-  # create a RELEASE directory
-  $ mkdir RELEASE
+# create a RELEASE directory
+$ mkdir RELEASE
 
-  # enter that directory
-  $ cd RELEASE
+# enter that directory
+$ cd RELEASE
+```
+> The next step is to run the root cmake. You may notice that the first time you run cmake it takes substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. From the same directory as above, enter the commands below.
+```bash
+# resolve dependencies and generate build files
+$ cmake ..
 
-  # generate build files
-  $ cmake ..
-
-  # compile binary
-  $ make
+# compile STK3700 binary
+$ make
 ```
 ##### Flashing the STK3700
 > I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. 

@@ -3,7 +3,7 @@ function(make_jlink_script OUTPUT_DIR PROJECT_NAME MBED_APP_START_ADDRESS)
 	# Set jlink's file path
 	set(BOARD_JLINK_PATH "${OUTPUT_DIR}")
 	# Jlink's flasher content
-	set(JLINK_FILE_DATA "loadbin ${PLATFORM_DIR_PATH}/release/bin/${PROJECT_NAME}.bin, ${MBED_APP_START_ADDRESS}\nr\ng\nqc\n")
+	set(JLINK_FILE_DATA "loadbin ${PLATFORM_ROOT}/${CMAKE_BUILD_TYPE}/bin/${PROJECT_NAME}.bin, ${MBED_APP_START_ADDRESS}\nr\ng\nqc\n")
 	# Create new file and writes content based on JLINK_FILE_DATA
 	file(WRITE "${BOARD_JLINK_PATH}/board.jlink" ${JLINK_FILE_DATA})
 endfunction(make_jlink_script)
@@ -21,7 +21,6 @@ function(show_memory_map PROJECT_TARGET SHOW_MEMORY_MAP PROJECT_SOURCE_DIR PROJE
 	endif()
 endfunction(show_memory_map)
 
-
 # Custom command to use objcopy to create .bin files out of ELF files
 function(make_mbed_firmware INPUT)
 	message(${CMAKE_CURRENT_BINARY_DIR})
@@ -29,5 +28,5 @@ function(make_mbed_firmware INPUT)
 			COMMAND ${GCC_DIR}/bin/arm-none-eabi-objcopy -O binary ${INPUT} ${INPUT}.bin
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 			COMMENT "objcopying to make mbed compatible firmware")
-	set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/${INPUT}.bin)
+	set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${PLATFORM_ROOT}/${CMAKE_BUILD_TYPE}/${INPUT}.bin)
 endfunction(make_mbed_firmware)

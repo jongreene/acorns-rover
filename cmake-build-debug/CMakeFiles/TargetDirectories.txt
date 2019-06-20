@@ -1,3 +1,0 @@
-/home/uberslam/projects/senior_design/semi-autonomous-rover/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/uberslam/projects/senior_design/semi-autonomous-rover/cmake-build-debug/CMakeFiles/remote_control_car.dir
-/home/uberslam/projects/senior_design/semi-autonomous-rover/cmake-build-debug/CMakeFiles/edit_cache.dir

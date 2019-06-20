@@ -1,4 +1,4 @@
-set(GCC_DIR ${PLATFORM_DIR_PATH}/tools/arm-gcc-toolchain)
+set(GCC_DIR ${PLATFORM_ROOT}/tools/arm-gcc-toolchain)
 set(CMAKE_TOOLCHAIN_FILE ./cmake/x86_64.cmake)
 
 # default name for linux and mac
@@ -14,8 +14,6 @@ endif()
 set(GCC_URL "https://developer.arm.com/-/media/Files/downloads/gnu-rm/7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2?revision=375265d4-e9b5-41c8-bf23-56cbe927e156?product=GNU%20Arm%20Embedded%20Toolchain,64-bit,,Linux,7-2017-q4-major")
 if(NOT EXISTS "${GCC_DIR}/${GCC_NAME}")
     message("Downloading: ${GCC_NAME}${GCC_NAME_EXTENSION}")
-#    file(DOWNLOAD ${GCC_URL} "${GCC_DIR}/${GCC_NAME}${GCC_NAME_EXTENSION}" SHOW_PROGRESS)
-
     file(DOWNLOAD
             ${GCC_URL}
             "${GCC_DIR}/${GCC_NAME}${GCC_NAME_EXTENSION}"

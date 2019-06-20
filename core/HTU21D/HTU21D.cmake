@@ -1,4 +1,4 @@
 set(SOURCES
         ${SOURCES}
-        ${PLATFORM_DIR_PATH}/core/HTU21D/HTU21D.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/core/HTU21D/HTU21D.cpp
 )

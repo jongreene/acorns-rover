@@ -1,4 +1,4 @@
 set(SOURCES
         ${SOURCES}
-        ${PLATFORM_DIR_PATH}/core/ALS31300/ALS31300.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/core/ALS31300/ALS31300.cpp
 )

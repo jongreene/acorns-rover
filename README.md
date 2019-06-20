@@ -2,8 +2,9 @@
 This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
 
 <img src="https://i1380.photobucket.com/albums/ah174/nibbleoverbyte/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98_zpspbunmdpz.jpeg" width="250" title="Rover on foam pad"></img>
+
+Setup
 ---
-## Setup
 If you follow this guide, setup should be a fairly straight forward process.
 ##### Cloning
 > To clone this project, open a terminal and navigate to where you want the repository to reside. Now, enter the command below.
@@ -12,7 +13,7 @@ If you follow this guide, setup should be a fairly straight forward process.
 $ git clone https://github.com/jongreene/semi-autonomous-rover.git
 ```
 ##### Compiling
-> Before compiling, you must prepare the project. From the root of the project open a terminal and enter the commands below.
+Before compiling, you must prepare the project. From the root of the project open a terminal and enter the commands below.
 ```bash
 # create a RELEASE directory
 $ mkdir RELEASE
@@ -20,7 +21,8 @@ $ mkdir RELEASE
 # enter that directory
 $ cd RELEASE
 ```
-> The next step is to run the root cmake. You may notice that the first time you run cmake it takes substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. From the same directory as above, enter the commands below.
+The next step is to run the root cmake. 
+> You may notice that the first time you run cmake it takes substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. From the same directory as above, enter the commands below.
 ```bash
 # resolve dependencies and generate build files
 $ cmake ..
@@ -29,7 +31,10 @@ $ cmake ..
 $ make
 ```
 ##### Flashing
-> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. Follow the commands below from a terminal pointed at the build directory.
+> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. 
+
+Follow the commands below from a terminal pointed at the build directory.
+
 ```bash
 # connect to board
 $ JLinkExe -device EFM32GG380F1024 -if SWD -speed 4000 -CommanderScript board.jlink
@@ -41,9 +46,10 @@ $ loadbin bin/semi-autonomous-rover.bin, 0x0
 $ r
 $ g
 ```
-> The board should now be executing the binary. This can be tested by sending it a UART command (described below) and verifying you get a response.
+The board should now be executing the binary. This can be tested by sending it a UART command (described below) and verifying you get a response.
+
+Communication
 ---
-## Communication
 The rover is setup to work seamlessly with [this](https://www.adafruit.com/product/2479) bluetooth module but will work with any standard UART device.
 ##### UART setup
 Below you will find images that will guide you in setting up a USB UART connection with CuteCom
@@ -71,8 +77,9 @@ There are two types of responses that can be expected when issuing a command.
 * command running: {"notification":"payload":{"return_string":"error: command is already running"}}
 * command stopped: {"notification":"payload":{"return_string":"error: command is not running"}}
 * queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}
+
+Customization
 ---
-## Customization
 This project is open source, so customization is absoultely possible and encouraged. The easiest place to start is by creating some custom commands. You'll find that it's surprisingly easy to add new functionality, once you have your development environment configured.
 ##### Creating commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.

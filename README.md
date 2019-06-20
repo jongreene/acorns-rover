@@ -5,8 +5,15 @@
 ## Initial setup
 ### Cloning
 > To clone this project, open a terminal where you want the repository to reside. Then enter git clone https://github.com/jongreene/semi-autonomous-rover.git and hit return.
-#### Build dependencies
+### Compiling
+> In order to compile, you must first create a folder in the root of the directory called "RELEASE" (for the time being). </br>Open a terminal and cd into that directory.
+</br>Now issue the command: ?>cmake ..
+</br>
+#### Resolving dependencies
 > At runtime, the cmake build system will automatically download a local copy of the ARM GNU toolchain as well as Mbed OS. The downloaded toolchain will be linked and configured to be used when compiling. The downloaded copy of Mbed OS will be switched to the version defined in the root CMakeLists.txt. Once all of the resources have been downloaded, any and all relavent patches are then applied to the third-party resources.
+
+
+### Flashing the STK3700
 
 ## Commands
 ### Command format
@@ -19,15 +26,11 @@
 ### Creating new commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.
 
-
-
 ### Communication
 ...
 
 #### UART handling
 ...
-
-
 
 ## Device drivers
 ...

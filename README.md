@@ -3,8 +3,12 @@
 > This highly configurable, bluetooth enabled rover, is controlled by a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle bi-directional UART communication, and sample external sensor data from custom PCBs or a shared i2c bus.
 
 ### Initial setup
-##### Cloning
-> To clone this project, open a terminal where you want the repository to reside. Then enter git clone https://github.com/jongreene/semi-autonomous-rover.git and hit return.
+#### Cloning
+> To clone this project, open a terminal and navigate to where you want the repository to reside. Now, enter the command below.
+```bash
+# clone the repository
+$ git clone https://github.com/jongreene/semi-autonomous-rover.git
+```
 #### Compiling
 > Before compiling, you must prepare the project. From the root of the project open a terminal and enter the commands below.
 ```bash

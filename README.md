@@ -26,7 +26,7 @@
 </br>command not found: {"notification":"payload":{"return_string":"error: command not found"}}
 </br>command running: {"notification":"payload":{"return_string":"error: command is already running"}}
 </br>command stopped: {"notification":"payload":{"return_string":"error: command is not running"}}
-queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}
+</br>queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}
 ### Creating new commands
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.
 

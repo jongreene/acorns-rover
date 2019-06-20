@@ -73,6 +73,6 @@ There are two types of responses that can be expected when issuing a command.
 * queue overflowed: {"notification":"payload":{"return_string":"error: queue overflowed"}}
 ---
 ## Customization
+This project is open source, so customization is absoultely possible and encouraged. The easiest place to start is by creating some custom commands. You'll find that it's surprisingly easy to add new functionality, once you have your development environment configured.
 ##### Creating commands
-Custom commands are surprisingly easy to setup, once you have your development environment configured.
 > Through the use of a highly modularized C/C++ framework, defining new callable functions takes little to no understanding of the underlying services. New routines can be implemented in just a few steps, making driver development fast and simple. While this rover is very capable, the underlying framework that drives it is the true bread and butter of this project.

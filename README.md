@@ -23,8 +23,9 @@ Before compiling, you must prepare the project. From the root of the project ope
   # enter that directory
   $ cd RELEASE
 ```
-The next step is to run the root cmake. 
-> You may notice that the first time you run cmake it takes substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. From the same directory as above, enter the commands below.
+The next step is to generate build files. 
+> The first time you run cmake it will take substantially longer. This is due to the cmake build system automatically downloading local copies of the ARM GNU toolchain as well as Mbed OS. The third-party resources are then patched. 
+From the RELEASE directory, enter the commands below.
 ```bash
   # resolve dependencies and generate build files
   $ cmake ..
@@ -34,13 +35,12 @@ The next step is to run the root cmake.
 ```
 
 ##### Flashing
-> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board. It is possible (and likely easier) to flash the development board using the built in J-Link programmer however I will likely develop my own board and want the methods I use to transfer over. 
+> I will be using a standalone J-Link JTAG/SWD programmer to flash the resulting binary onto the board.
 
 Follow the commands below from a terminal pointed at the build directory.
-
 ```bash
   # connect to board
-  $ JLinkExe -device EFM32GG380F1024 -if SWD -speed 4000 -CommanderScript board.jlink
+  $ JLinkExe -device EFM32GG380F1024 -if SWD -speed 4000
 
   # load the binary onto the STK3700
   $ loadbin bin/semi-autonomous-rover.bin, 0x0
@@ -50,7 +50,7 @@ Follow the commands below from a terminal pointed at the build directory.
   $ g
 ```
 
-The board should now be executing the binary. This can be tested by sending it a UART command (described below) and verifying you get a response.
+The board should now be running the new binary.
 
 Communication
 ---

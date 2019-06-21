@@ -23,7 +23,7 @@ public:
     void emit(std::string &);
 
 private:
-	void CommandsCallback(string &raw );
+	void CommandsCallback(vector<string> &command);
 	Commands* commands_object_;
     void dispatcher();
     void sendResponse(RESPONSE response, const std::string &message = "unknown_error");

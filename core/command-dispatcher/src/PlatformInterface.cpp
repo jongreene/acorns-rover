@@ -5,11 +5,11 @@
 
 using namespace std;
 
-static auto bad_json_=R"({"nak":"","payload":{"return_value":false,"return_string":"json error: badly formatted json"}})";
-static auto command_not_found_=R"({"notification":"payload":{"return_string":"error: command not found"}})";
-static auto command_running_=R"({"notification":"payload":{"return_string":"error: command is already running"}})";
-static auto command_stopped_=R"({"notification":"payload":{"return_string":"error: command is not running"}})";
-static auto queue_overflowed_=R"({"notification":"payload":{"return_string":"error: queue overflowed"}})";
+static auto bad_json_=R"({"nak","payload":{"error: badly formatted json"}})";
+static auto command_not_found_=R"({"notification":"payload":{"error: command not found"}})";
+static auto command_running_=R"({"notification":"payload":{"error: command is already running"}})";
+static auto command_stopped_=R"({"notification":"payload":{"error: command is not running"}})";
+static auto queue_overflowed_=R"({"notification":"payload":{"error: queue overflowed"}})";
 
 PlatformInterface::PlatformInterface() {
     workQueue_= new EventQueue(32 * EVENTS_EVENT_SIZE);
@@ -22,13 +22,12 @@ PlatformInterface::PlatformInterface() {
 
 const vector<string> ParseInput(string &input) {
 	vector<string> command_object;
-	std::string delimiter = ",";
 	size_t pos = 0;
 	std::string token;
-	while ((pos = input.find(delimiter)) != std::string::npos) {
+	while ((pos = input.find(',')) != std::string::npos) {
 		token = input.substr(0, pos);
 		command_object.push_back(token);
-		input.erase(0, pos + delimiter.length());
+		input.erase(0, pos + 1);
 	}
 	command_object.push_back(input);
 	return command_object;
@@ -43,8 +42,14 @@ void PlatformInterface::dispatcher() {
 			sendResponse(RESPONSE::NACK);
 		}
 		else {
-
-			workQueue_->call(callback(this, &PlatformInterface::CommandsCallback), raw_command);
+			sendResponse(RESPONSE::ACK, raw_command);
+			vector<string> command_string = ParseInput(raw_command);
+			if((Commands*)commands_object_ ->findCommand(command_string.at(0))) {
+				workQueue_->call(callback(this, &PlatformInterface::CommandsCallback), command_string);
+			}
+			else {
+				sendResponse(RESPONSE::COMMAND_NOT_FOUND);
+			}
 		}
 	}
 }
@@ -57,9 +62,9 @@ void PlatformInterface::sendResponse(RESPONSE response, const string &message) {
             break;
 
         case RESPONSE::ACK  :
-        	response_string = R"({"Notice":"Command Valid","ack":")";
+        	response_string = R"({"ack","payload":{"data_received":"{)";
 		    response_string += message;
-		    response_string += R"('"})";
+		    response_string += R"(}"}})";
             break;
 
         case RESPONSE::COMMAND_NOT_FOUND :
@@ -87,10 +92,8 @@ void PlatformInterface::emit(std::string &device_response) {
 	serial_buffer_->SendLine(device_response + '\n');
 }
 
-void PlatformInterface::CommandsCallback(string &raw_command) {
-	vector<string> command_object = ParseInput(raw_command);
-	auto commands = (Commands*)commands_object_;
-	commands->executeCommand(command_object);
+void PlatformInterface::CommandsCallback(vector<string> &command) {
+	(Commands*)commands_object_ ->executeCommand(command);
 }
 
 

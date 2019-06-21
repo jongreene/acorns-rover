@@ -96,24 +96,20 @@ void UARTHandler::SendLine(string str){
 	NVIC_SetPendingIRQ(UART1_TX_IRQn);
 }
 
-int BracketMatch(char c, stack<char> &bracket){
-	if(bracket.empty() && c != '{')
-		return -1;
-
-	if(c == '}') {
-		if(bracket.empty())
-			return -1;
-
-		if(bracket.top() == '{')
-			bracket.pop();
-
-		return bracket.empty();
+void BracketMatch(char c, stack<char> &bracket, bool &matched_brackets, int &error) {
+	if( (bracket.empty() && c != '}' && c != '{')
+	|| (c == '}' && bracket.empty())
+	|| (c == '{' && !bracket.empty())
+	|| error !=0 )	{
+		error = -1;
 	}
-	else if(c == '{') {
+	else if( c == '}' ) {
+		bracket.pop();
+		if (bracket.empty()) matched_brackets = true;
+	}
+	else if( c == '{' ) {
 		bracket.push(c);
 	}
-
-	return 0;
 }
 
 const string UARTHandler::ReadLine() {
@@ -128,10 +124,23 @@ const string UARTHandler::ReadLine() {
 		EnableInterrupts(false);
 	}
 
-	char current_character = rx_buffer_->data_->at(rx_buffer_->out_);
+	char current_character;
+	bool matched_brackets = false;
+	int error = 0;
 	while(true) {
-		if(current_character != '\n' && current_character != '}' && current_character != '{')
-			line += current_character;
+		current_character = rx_buffer_->data_->at(rx_buffer_->out_);
+
+		if(current_character != '\n') {
+			if (current_character != '}' && current_character != '{')
+				line += current_character;
+
+			BracketMatch(current_character, bracket, matched_brackets, error);
+		}
+		else {
+			if(!matched_brackets)
+				line = "ERROR";
+			break;
+		}
 
 		if((rx_buffer_->out_ + 1) % Buffer::size_ == rx_buffer_->in_) {
 			EnableInterrupts(true);
@@ -142,18 +151,6 @@ const string UARTHandler::ReadLine() {
 		}
 
 		rx_buffer_->out_ = (rx_buffer_->out_ + 1) % Buffer::size_;
-
-		int match = BracketMatch(current_character, bracket);
-
-		if(match == 1)
-			break;
-
-		if(match == -1 || (current_character == '\n' && line.size() == 1)) {
-			line = "ERROR";
-			break;
-		}
-
-		current_character = rx_buffer_->data_->at(rx_buffer_->out_);
 	}
 
 	EnableInterrupts(true);

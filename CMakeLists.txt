@@ -4,19 +4,16 @@ set(CMAKE_BUILD_TYPE RELEASE)
 
 set(PLATFORM_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 set(MBED_TOP_DIR "${PLATFORM_ROOT}/lib/mbed-os")
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/tools/CMakeModules/gcc_arm_toolchain.cmake")
 
 project(semi-autonomous-rover)
 
 link_directories(${MBED_TOP_DIR}/libs/EFM32GG_STK3700)
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/tools/CMakeModules/gcc_arm_toolchain.cmake)
 include(${PLATFORM_ROOT}/tools/CMakeModules/application_functions.cmake)
 include(${PLATFORM_ROOT}/tools/CMakeModules/git_mbed.cmake)
 include(${PLATFORM_ROOT}/tools/CMakeModules/target_EFM32GG990F1024.cmake)
 include(${PLATFORM_ROOT}/tools/CMakeModules/mbed_EFM32GG990F1024.cmake)
-include(${PLATFORM_ROOT}/core/HTU21D/HTU21D.cmake)
-include(${PLATFORM_ROOT}/core/MPL3115A2/MPL3115A2.cmake)
-include(${PLATFORM_ROOT}/core/ALS31300/ALS31300.cmake)
 
 include_directories(include
         core/command-dispatcher/include
@@ -34,6 +31,7 @@ set(SOURCES
         src/Commands.cpp
         core/command-dispatcher/src/UARTHandler.cpp
         core/command-dispatcher/src/PlatformInterface.cpp
+        core/ALS31300/ALS31300.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

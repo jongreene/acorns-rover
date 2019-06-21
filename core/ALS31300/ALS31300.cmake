@@ -1,4 +1,0 @@
-set(SOURCES
-        ${SOURCES}
-        ${CMAKE_CURRENT_SOURCE_DIR}/core/ALS31300/ALS31300.cpp
-)

@@ -31,14 +31,29 @@ static DMA_CB_TypeDef dmaCallBack;
  *****************************************************************************/
 static void basicTransferComplete(unsigned int channel, bool primary, void *user)
 {
-	(void) user; /* Unused parameter */
-	/* Refresh DMA basic transaction cycle */
-	DMA_ActivateBasic(channel,
-	                  primary,
+	LEUART0->FREEZE = 1;
+	LEUART_Enable(LEUART0, leuartDisable);
+	LEUART_IntClear(LEUART0, LEUART_IF_RXDATAV);
+	NVIC_ClearPendingIRQ(LEUART0_IRQn);
+	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
+	LEUART0->FREEZE = 0;
+	while (LEUART0->SYNCBUSY) { }
+
+	DMA_ActivateBasic(DMA_CHANNEL,
+	                  true,
 	                  false,
 	                  (void *)&LEUART0->TXDATA,
 	                  (void *)&LEUART0->RXDATA,
 	                  (NUM_TRANSFER-1));
+
+//	if(UART1->IF & USART_IF_RXDATAV) {
+//	}
+}
+
+void LEUART0_IRQHandler() {
+
+//	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
+//	LEUART_IntClear(LEUART0, 0xffffffff);
 }
 
 /**************************************************************************//**
@@ -134,8 +149,17 @@ void setupLeuart(void) {
 
 	LEUART_Init(LEUART0, &init);
 
+	LEUART0->FREEZE = 1;
+
 	/* Enable pins at default location */
 	LEUART0->ROUTE = LEUART_ROUTE_RXPEN | LEUART_ROUTE_TXPEN | LEUART_LOCATION;
+	LEUART0->CTRL = LEUART_CTRL_SFUBRX | LEUART_CTRL_TXDMAWU | LEUART_CTRL_RXDMAWU | LEUART_CTRL_AUTOTRI;
+	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
+	LEUART0->SIGFRAME = (uint8_t)'\r';
+	LEUART0->STARTFRAME = (uint8_t)'$';
+
+	LEUART0->FREEZE = 0;
+	while (LEUART0->SYNCBUSY) { }
 
 	/* Set RXDMAWU to wake up the DMA controller in EM2 */
 	LEUART_RxDmaInEM2Enable(LEUART0, true);

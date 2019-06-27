@@ -4,6 +4,7 @@
 #include "em_emu.h"
 #include "em_leuart.h"
 #include "em_dma.h"
+#include "em_ebi.h"
 
 extern "C" {
 	extern DMA_DESCRIPTOR_TypeDef dmaControlBlock[];
@@ -18,10 +19,11 @@ extern "C" {
 
 /** DMA Configurations            */
 #define DMA_CHANNEL       0          /* DMA channel is 0 */
-#define NUM_TRANSFER      1024       /* Number of transfers per DMA cycle */
+#define NUM_TRANSFER      32       /* Number of transfers per DMA cycle */
 
 /** DMA callback structure */
-static DMA_CB_TypeDef dmaCallBack;
+static DMA_CB_TypeDef dmaRxCallBack;
+static DMA_CB_TypeDef dmaTxCallBack;
 
 /**************************************************************************//**
  * @brief  DMA callback function
@@ -29,15 +31,11 @@ static DMA_CB_TypeDef dmaCallBack;
  * @details This function is invoked once a DMA transfer cycle is completed.
  *          It then refreshes the completed DMA descriptor.
  *****************************************************************************/
-static void basicTransferComplete(unsigned int channel, bool primary, void *user)
+#define MAX_LEN 24
+char source[ MAX_LEN ] = "\nFull command received\n";
+static void rxDmaCallback(unsigned int channel, bool primary, void *user)
 {
-	LEUART0->FREEZE = 1;
-	LEUART_Enable(LEUART0, leuartDisable);
-	LEUART_IntClear(LEUART0, LEUART_IF_RXDATAV);
-	NVIC_ClearPendingIRQ(LEUART0_IRQn);
 	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
-	LEUART0->FREEZE = 0;
-	while (LEUART0->SYNCBUSY) { }
 
 	DMA_ActivateBasic(DMA_CHANNEL,
 	                  true,
@@ -46,14 +44,18 @@ static void basicTransferComplete(unsigned int channel, bool primary, void *user
 	                  (void *)&LEUART0->RXDATA,
 	                  (NUM_TRANSFER-1));
 
-//	if(UART1->IF & USART_IF_RXDATAV) {
-//	}
+	DMA_ActivateBasic(
+			1,
+			true,
+			false,
+			(void*) (&(LEUART0->TXDATA)),
+			(void*) source,
+			MAX_LEN - 2);
 }
 
-void LEUART0_IRQHandler() {
+static void txDmaCallback(unsigned int channel, bool primary, void *user)
+{
 
-//	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
-//	LEUART_IntClear(LEUART0, 0xffffffff);
 }
 
 /**************************************************************************//**
@@ -72,44 +74,49 @@ void setupDma(void)
 {
 	/* DMA configuration structs */
 	DMA_Init_TypeDef       dmaInit;
-	DMA_CfgChannel_TypeDef channelCfg;
-	DMA_CfgDescr_TypeDef   descrCfg;
+	DMA_CfgChannel_TypeDef rxChannelCfg;
+	DMA_CfgChannel_TypeDef txChannelCfg;
+
+	DMA_CfgDescr_TypeDef   descrCfgRx;
+	DMA_CfgDescr_TypeDef   descrCfgTx;
 
 	/* Initializing the DMA */
 	dmaInit.hprot        = 0;
 	dmaInit.controlBlock = dmaControlBlock;
 	DMA_Init(&dmaInit);
+	dmaRxCallBack.cbFunc = rxDmaCallback;
+	dmaRxCallBack.userPtr = NULL;
+	rxChannelCfg.highPri   = false; /* Not useful with peripherals */
+	rxChannelCfg.enableInt = true;  /* Enabling interrupt to refresh DMA cycle*/
+	rxChannelCfg.select = DMAREQ_LEUART0_RXDATAV;
+	rxChannelCfg.cb     = &dmaRxCallBack;
+	DMA_CfgChannel(0, &rxChannelCfg);
+	descrCfgRx.dstInc = dmaDataIncNone;
+	descrCfgRx.srcInc = dmaDataIncNone;
+	descrCfgRx.size   = dmaDataSize1;
+	descrCfgRx.arbRate = dmaArbitrate1;
+	descrCfgRx.hprot   = 0;
+	DMA_CfgDescr(DMA_CHANNEL, true, &descrCfgRx);
+	DMA_CfgChannel(0, &rxChannelCfg);
 
-	/* Set the interrupt callback routine */
-	dmaCallBack.cbFunc = basicTransferComplete;
-	/* Callback doesn't need userpointer */
-	dmaCallBack.userPtr = NULL;
 
-	/* Setting up channel */
-	channelCfg.highPri   = false; /* Not useful with peripherals */
-	channelCfg.enableInt = true;  /* Enabling interrupt to refresh DMA cycle*/
-
-	/* Configure channel 0 */
-	/*Setting up DMA transfer trigger request*/
-	channelCfg.select = DMAREQ_LEUART0_RXDATAV;
-	/* Setting up callback function to refresh descriptors*/
-	channelCfg.cb     = &dmaCallBack;
-	DMA_CfgChannel(0, &channelCfg);
-
-	/* Setting up channel descriptor */
-	/* Destination is LEUART_Tx register and doesn't move */
-	descrCfg.dstInc = dmaDataIncNone;
-
-	/* Source is LEUART_RX register and transfers 8 bits each time */
-	descrCfg.srcInc = dmaDataIncNone;
-	descrCfg.size   = dmaDataSize1;
-
-	/* Default setting of DMA arbitration*/
-	descrCfg.arbRate = dmaArbitrate1;
-	descrCfg.hprot   = 0;
-
-	/* Configure primary descriptor */
-	DMA_CfgDescr(DMA_CHANNEL, true, &descrCfg);
+	dmaTxCallBack.cbFunc = txDmaCallback;
+	dmaTxCallBack.userPtr = NULL;
+	// DMA TX channel configuration
+	txChannelCfg.enableInt = true;
+	txChannelCfg.highPri = false;
+	txChannelCfg.select = DMAREQ_LEUART0_TXBL;
+	txChannelCfg.cb = &dmaTxCallBack;
+	txChannelCfg.cb->primary = true;
+	txChannelCfg.cb->userPtr = NULL;
+	DMA_CfgChannel(1, &txChannelCfg);
+	// DMA TX configuration descriptor
+	descrCfgTx.arbRate = dmaArbitrate1;
+	descrCfgTx.dstInc = dmaDataIncNone;
+	descrCfgTx.hprot = 0;
+	descrCfgTx.size = dmaDataSize1;
+	descrCfgTx.srcInc = dmaDataInc1;
+	DMA_CfgDescr(1, true, &descrCfgTx);
 
 	/* Enable Basic Transfer cycle */
 	DMA_ActivateBasic(DMA_CHANNEL,

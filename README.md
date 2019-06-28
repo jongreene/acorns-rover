@@ -1,5 +1,9 @@
-# Semi-Autonomous Rover
-This is a highly configurable, bluetooth enabled rover, it is controlled using a Giant Gecko STK3700 development board. Currently, the board is configured to drive four independently timed pwm motor-drivers, handle full-duplex UART communication, and sample external sensor data from custom sensors over i2c.
+# ARM Control Framework
+This framework provides external control of an embedded device through a UART connection. Two key components to this framework are the: request handler and commands class.
+
+The request handler utilizes a UART connection to send and received data in the form of packets. A complete packet of data should consist of one command and 0-to-n number of parameters. The command field determines the function to invoke.
+
+The commands class is where callable functions live. This class is independent of the request handler, except for a callback pointer. This pointer enables UART responses from class functions. Since the class is independent, adding new functionality straight forward. 
 
 <img src="https://github.com/jongreene/projects-media/blob/master/acorns/6db4ab84-d0be-4a54-b1a0-f3dc903e4d98.jpeg?raw=true" width="300" title="Rover on foam pad"></img>
 

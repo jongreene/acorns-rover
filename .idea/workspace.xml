@@ -12,12 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="288b0ef8-283c-42a9-8ba0-e7d82be50965" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/ALS31300/ALS31300.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/HTU21D/HTU21D.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/MPL3115A2/MPL3115A2.cmake" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/TARGET_1024K/TOOLCHAIN_GCC_ARM/efm32gg.ld" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/TARGET_1024K/TOOLCHAIN_GCC_ARM/efm32gg.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -32,85 +28,41 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5094748">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="22" selection-start-line="22" selection-end-line="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tools/CMakeModules/git_mbed.cmake">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="3" selection-start-line="3" selection-end-line="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" selection-start-line="29" selection-end-line="29" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1819">
-                  <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1598">
-                  <caret line="94" column="40" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Commands.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" selection-start-line="17" selection-end-line="17" />
-                  <folding>
-                    <element signature="e#40#61#0" expanded="true" />
-                    <element signature="e#3400#6685#0" />
-                    <element signature="e#6687#8786#0" />
-                    <element signature="e#8788#9144#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3531">
+              <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3102">
+              <caret line="94" column="40" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Commands.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="726">
+              <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+              <folding>
+                <element signature="e#40#61#0" expanded="true" />
+                <element signature="e#3400#6685#0" />
+                <element signature="e#6687#8786#0" />
+                <element signature="e#8788#9144#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -144,7 +96,6 @@
         <option value="$PROJECT_DIR$/core/MPL3115A2/MPL3115A2.cmake" />
         <option value="$PROJECT_DIR$/core/HTU21D/HTU21D.cmake" />
         <option value="$PROJECT_DIR$/core/ALS31300/ALS31300.cmake" />
-        <option value="$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake" />
         <option value="$PROJECT_DIR$/tools/CMakeModules/git_mbed.cmake" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/core/command-dispatcher/include/PlatformInterface.h" />
@@ -153,14 +104,15 @@
         <option value="$PROJECT_DIR$/core/ALS31300/ALS31300.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake" />
+        <option value="$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="470" />
-    <option name="y" value="27" />
-    <option name="width" value="2224" />
-    <option name="height" value="1301" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="981" />
+    <option name="y" value="-8" />
+    <option name="width" value="1390" />
+    <option name="height" value="1156" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -208,39 +160,7 @@
             <path>
               <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
               <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
-              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
-              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="arm-gcc-toolchain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
-              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="arm-gcc-toolchain" type="462c0819:PsiDirectoryNode" />
-              <item name="gcc-arm-none-eabi-7-2017-q4-major" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
-              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="arm-gcc-toolchain" type="462c0819:PsiDirectoryNode" />
-              <item name="gcc-arm-none-eabi-7-2017-q4-major" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
-              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="CMakeModules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -270,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.remote_control_car">
+  <component name="RunManager" selected="CMake Application.remote_control_car">
     <configuration name="remote_control_car" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$/RELEASE" PASS_PARENT_ENVS_2="true" PROJECT_NAME="semi-autonomous-rover" TARGET_NAME="remote_control_car" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="semi-autonomous-rover" RUN_TARGET_NAME="remote_control_car">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -282,8 +202,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.remote_control_car" />
-      <item itemvalue="Application.semi-autonomous-rover" />
+      <item itemvalue="CMake Application.remote_control_car" />
+      <item itemvalue="CMake Application.semi-autonomous-rover" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -297,20 +217,21 @@
       <option name="presentableId" value="Default" />
       <updated>1560983136494</updated>
       <workItem from="1560983137786" duration="23521000" />
+      <workItem from="1563215080842" duration="81000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33890000" />
+    <option name="totallyTimeSpent" value="33971000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="470" y="27" width="2224" height="1301" extended-state="0" />
+    <frame x="130" y="-8" width="3710" height="2168" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15119486" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15295418" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="CMake" order="0" visible="true" weight="0.32931036" />
+      <window_info anchor="bottom" id="CMake" order="0" weight="0.32900208" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -355,20 +276,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/MPL3115A2/MPL3115A2.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/HTU21D/HTU21D.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core/MPL3115A2/MPL3115A2.cmake" />
+    <entry file="file://$PROJECT_DIR$/core/HTU21D/HTU21D.cmake" />
     <entry file="file://$PROJECT_DIR$/src/program_main.cpp" />
     <entry file="file://$PROJECT_DIR$/include/program_main.h" />
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
@@ -413,20 +322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="40" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/ALS31300/ALS31300.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -434,30 +329,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/ALS31300/ALS31300.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core/ALS31300/ALS31300.cmake" />
     <entry file="file://$PROJECT_DIR$/core/ALS31300/ALS31300.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="18" selection-start-column="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#40#61#0" expanded="true" />
-            <element signature="e#3400#6685#0" />
-            <element signature="e#6687#8786#0" />
-            <element signature="e#8788#9144#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -482,31 +358,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake">
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="3531">
+          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/CMakeModules/git_mbed.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="3102">
+          <caret line="94" column="40" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="495">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/CMakeModules/git_mbed.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/CMakeModules/application_functions.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#40#61#0" expanded="true" />
+            <element signature="e#3400#6685#0" />
+            <element signature="e#6687#8786#0" />
+            <element signature="e#8788#9144#0" />
+          </folding>
         </state>
       </provider>
     </entry>

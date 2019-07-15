@@ -11,9 +11,7 @@ endfunction(make_jlink_script)
 # Display memory map if SHOW_STATIC_MEMORY_MAP_ANALYSIS sets to true
 # Note: This requires installing mbed-os python depencies
 function(show_memory_map PROJECT_TARGET SHOW_MEMORY_MAP PROJECT_SOURCE_DIR PROJECT_NAME)
-	message("first")
 	if(${SHOW_MEMORY_MAP})
-		message("second")
 		# Show Static Memory Map Analysis using mbed-os memap.py
 		add_custom_command(TARGET ${PROJECT_TARGET} POST_BUILD
 				COMMAND python ../../lib/mbed-os/sources/mbed-os-5.9.7/tools/memap.py ${CMAKE_CURRENT_BINARY_DIR}/../${PROJECT_NAME}.map -t GCC_ARM
@@ -23,7 +21,6 @@ endfunction(show_memory_map)
 
 # Custom command to use objcopy to create .bin files out of ELF files
 function(make_mbed_firmware INPUT)
-	message(${CMAKE_CURRENT_BINARY_DIR})
 	add_custom_command(TARGET ${INPUT}
 			COMMAND ${GCC_DIR}/bin/arm-none-eabi-objcopy -O binary ${INPUT} ${INPUT}.bin
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}

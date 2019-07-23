@@ -13,8 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="288b0ef8-283c-42a9-8ba0-e7d82be50965" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/LUARTHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/LUARTHandler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/LUARTHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/core/command-dispatcher/include/LUARTHandler.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/TARGET_1024K/TOOLCHAIN_GCC_ARM/efm32gg.ld" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/TARGET_1024K/TOOLCHAIN_GCC_ARM/efm32gg.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -31,11 +33,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.40365922">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+                <state relative-caret-position="425">
+                  <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -47,7 +49,16 @@
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="578">
-                  <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+                  <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/include/Connector.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="748">
+                  <caret line="46" selection-start-line="46" selection-end-line="46" />
                 </state>
               </provider>
             </entry>
@@ -56,32 +67,42 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/LUARTHandler.h">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/include/LUARTHandler.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+                <state relative-caret-position="2754">
+                  <caret line="162" selection-start-line="162" selection-end-line="162" />
                   <folding>
-                    <element signature="e#0#22#0" expanded="true" />
+                    <element signature="e#51#73#0" expanded="true" />
+                    <element signature="e#936#1192#0" />
+                    <element signature="e#1867#2381#0" />
+                    <element signature="e#4239#4351#0" />
+                    <element signature="e#4163#5866#0" />
+                    <element signature="e#5944#6052#0" />
+                    <element signature="e#5931#6243#0" />
+                    <element signature="e#6249#7210#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/Connector.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="764">
+                  <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#42#64#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/efm32gg_dmareq.h">
+            <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/emlib/inc/em_emu.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+                <state relative-caret-position="12206">
+                  <caret line="718" column="5" selection-start-line="718" selection-start-column="5" selection-end-line="718" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -89,36 +110,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/emlib/inc/em_dma.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="179" column="11" selection-start-line="179" selection-start-column="11" selection-end-line="179" selection-end-column="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="543">
-                  <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#2205#2579#0" />
-                    <element signature="e#2581#3631#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Commands.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="17" selection-start-line="17" selection-end-line="17" />
-                  <folding>
-                    <element signature="e#40#61#0" expanded="true" />
-                    <element signature="e#3400#6685#0" />
-                    <element signature="e#6687#8786#0" />
-                    <element signature="e#8788#9144#0" />
-                  </folding>
+                <state relative-caret-position="2482">
+                  <caret line="146" column="60" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="60" />
                 </state>
               </provider>
             </entry>
@@ -154,9 +147,11 @@
       <find>BLOCKEN</find>
       <find>LEUART1</find>
       <find>inter</find>
-      <find>DMA_CfgDescr</find>
       <find>rxDmaCallback</find>
       <find>dmaCallBack</find>
+      <find>DMA_CfgDescr</find>
+      <find>tx_callback</find>
+      <find>rxChannelCfg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,17 +175,20 @@
         <option value="$PROJECT_DIR$/core/ALS31300/ALS31300.h" />
         <option value="$PROJECT_DIR$/tools/CMakeModules/gcc_arm_toolchain.cmake" />
         <option value="$PROJECT_DIR$/src/leuart-dma.cpp" />
+        <option value="$PROJECT_DIR$/include/LUARTHandler.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/include/LUARTHandler.h" />
+        <option value="$PROJECT_DIR$/core/command-dispatcher/include/Connector.h" />
+        <option value="$PROJECT_DIR$/core/command-dispatcher/include/LUARTHandler.h" />
+        <option value="$PROJECT_DIR$/core/command-dispatcher/src/Connector.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="606" />
+    <option name="x" value="510" />
     <option name="y" value="27" />
-    <option name="width" value="1997" />
+    <option name="width" value="2093" />
     <option name="height" value="1301" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -216,6 +214,13 @@
               <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="command-dispatcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
+              <item name="semi-autonomous-rover" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="command-dispatcher" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="semi-autonomous-rover" type="b2602c69:ProjectViewProjectNode" />
@@ -263,6 +268,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/core/command-dispatcher/include" />
+      <recent name="$PROJECT_DIR$/core/command-dispatcher/src" />
       <recent name="$PROJECT_DIR$/include" />
     </key>
   </component>
@@ -306,19 +313,21 @@
       <updated>1560983136494</updated>
       <workItem from="1560983137786" duration="23521000" />
       <workItem from="1561481726339" duration="12972000" />
-      <workItem from="1561587455539" duration="11067000" />
+      <workItem from="1561587455539" duration="12502000" />
+      <workItem from="1561730628333" duration="12043000" />
+      <workItem from="1563900591225" duration="60000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58837000" />
+    <option name="totallyTimeSpent" value="72375000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="606" y="27" width="1997" height="1301" extended-state="0" />
+    <frame x="510" y="27" width="2093" height="1301" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.10261673" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1599022" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="CMake" order="0" weight="0.33017242" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -517,9 +526,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/efm32gg_dmareq.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/connector.cpp" />
+    <entry file="file://$PROJECT_DIR$/include/connector.h" />
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/UARTHandler.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
+        <state relative-caret-position="1070">
           <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
           <folding>
             <element signature="e#2205#2579#0" />
@@ -541,57 +566,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/PlatformInterface.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/emlib/inc/em_emu.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="716" column="41" selection-start-line="716" selection-start-column="41" selection-end-line="716" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        <state relative-caret-position="425">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/include/Connector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/include/LUARTHandler.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2754">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+          <folding>
+            <element signature="e#51#73#0" expanded="true" />
+            <element signature="e#936#1192#0" />
+            <element signature="e#1867#2381#0" />
+            <element signature="e#4239#4351#0" />
+            <element signature="e#4163#5866#0" />
+            <element signature="e#5944#6052#0" />
+            <element signature="e#5931#6243#0" />
+            <element signature="e#6249#7210#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/emlib/inc/em_emu.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12206">
+          <caret line="718" column="5" selection-start-line="718" selection-start-column="5" selection-end-line="718" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/emlib/inc/em_dma.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="179" column="11" selection-start-line="179" selection-start-column="11" selection-end-line="179" selection-end-column="11" />
+        <state relative-caret-position="2482">
+          <caret line="146" column="60" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/mbed-os/sources/mbed-os-5.8.3/targets/TARGET_Silicon_Labs/TARGET_EFM32/TARGET_EFM32GG/device/efm32gg_dmareq.h">
+    <entry file="file://$PROJECT_DIR$/core/command-dispatcher/src/Connector.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/LUARTHandler.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+        <state relative-caret-position="764">
+          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#42#64#0" expanded="true" />
           </folding>
         </state>
       </provider>

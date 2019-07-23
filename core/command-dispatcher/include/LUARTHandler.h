@@ -11,19 +11,20 @@ extern "C" {
 }
 
 /** LEUART Rx/Tx Port/Pin Location */
-#define LEUART_LOCATION    0
-#define LEUART_TXPORT      gpioPortD        /* LEUART transmission port */
-#define LEUART_TXPIN       4                /* LEUART transmission pin  */
-#define LEUART_RXPORT      gpioPortD        /* LEUART reception port    */
-#define LEUART_RXPIN       5                /* LEUART reception pin     */
+#define LEUART_LOCATION     0
+#define LEUART_TXPORT       gpioPortD        /* LEUART transmission port */
+#define LEUART_TXPIN        4                /* LEUART transmission pin  */
+#define LEUART_RXPORT       gpioPortD        /* LEUART reception port    */
+#define LEUART_RXPIN        5                /* LEUART reception pin     */
 
 /** DMA Configurations            */
-#define DMA_CHANNEL       0          /* DMA channel is 0 */
-#define NUM_TRANSFER      32       /* Number of transfers per DMA cycle */
+#define RX_CHANNEL          0          /* DMA channel is 0 */
+#define TX_CHANNEL          1          /* DMA channel is 0 */
+#define NUM_TRANSFER        32       /* Number of transfers per DMA cycle */
 
 /** DMA callback structure */
-static DMA_CB_TypeDef dmaRxCallBack;
-static DMA_CB_TypeDef dmaTxCallBack;
+static DMA_CB_TypeDef rx_callback;
+static DMA_CB_TypeDef tx_callback;
 
 /**************************************************************************//**
  * @brief  DMA callback function
@@ -33,19 +34,9 @@ static DMA_CB_TypeDef dmaTxCallBack;
  *****************************************************************************/
 #define MAX_LEN 24
 char source[ MAX_LEN ] = "\nFull command received\n";
-static void rxDmaCallback(unsigned int channel, bool primary, void *user)
+static void rxCallback(unsigned int channel, bool primary, void *user)
 {
-	LEUART0->CMD |= LEUART_CMD_RXBLOCKEN;
-
-	DMA_ActivateBasic(DMA_CHANNEL,
-	                  true,
-	                  false,
-	                  (void *)&LEUART0->TXDATA,
-	                  (void *)&LEUART0->RXDATA,
-	                  (NUM_TRANSFER-1));
-
-	DMA_ActivateBasic(
-			1,
+	DMA_ActivateBasic(TX_CHANNEL,
 			true,
 			false,
 			(void*) (&(LEUART0->TXDATA)),
@@ -53,7 +44,7 @@ static void rxDmaCallback(unsigned int channel, bool primary, void *user)
 			MAX_LEN - 2);
 }
 
-static void txDmaCallback(unsigned int channel, bool primary, void *user)
+static void txCallback(unsigned int channel, bool primary, void *user)
 {
 
 }
@@ -84,47 +75,38 @@ void setupDma(void)
 	dmaInit.hprot        = 0;
 	dmaInit.controlBlock = dmaControlBlock;
 	DMA_Init(&dmaInit);
-	dmaRxCallBack.cbFunc = rxDmaCallback;
-	dmaRxCallBack.userPtr = NULL;
+	rx_callback.cbFunc = rxCallback;
+	rx_callback.userPtr = NULL;
 	rxChannelCfg.highPri   = false; /* Not useful with peripherals */
 	rxChannelCfg.enableInt = true;  /* Enabling interrupt to refresh DMA cycle*/
 	rxChannelCfg.select = DMAREQ_LEUART0_RXDATAV;
-	rxChannelCfg.cb     = &dmaRxCallBack;
-	DMA_CfgChannel(0, &rxChannelCfg);
+	rxChannelCfg.cb     = &rx_callback;
+	DMA_CfgChannel(RX_CHANNEL, &rxChannelCfg);
 	descrCfgRx.dstInc = dmaDataIncNone;
 	descrCfgRx.srcInc = dmaDataIncNone;
 	descrCfgRx.size   = dmaDataSize1;
 	descrCfgRx.arbRate = dmaArbitrate1;
 	descrCfgRx.hprot   = 0;
-	DMA_CfgDescr(DMA_CHANNEL, true, &descrCfgRx);
-	DMA_CfgChannel(0, &rxChannelCfg);
+	DMA_CfgDescr(RX_CHANNEL, true, &descrCfgRx);
 
 
-	dmaTxCallBack.cbFunc = txDmaCallback;
-	dmaTxCallBack.userPtr = NULL;
+	tx_callback.cbFunc = txCallback;
+	tx_callback.userPtr = NULL;
 	// DMA TX channel configuration
 	txChannelCfg.enableInt = true;
 	txChannelCfg.highPri = false;
 	txChannelCfg.select = DMAREQ_LEUART0_TXBL;
-	txChannelCfg.cb = &dmaTxCallBack;
+	txChannelCfg.cb = &tx_callback;
 	txChannelCfg.cb->primary = true;
 	txChannelCfg.cb->userPtr = NULL;
-	DMA_CfgChannel(1, &txChannelCfg);
+	DMA_CfgChannel(TX_CHANNEL, &txChannelCfg);
 	// DMA TX configuration descriptor
 	descrCfgTx.arbRate = dmaArbitrate1;
 	descrCfgTx.dstInc = dmaDataIncNone;
 	descrCfgTx.hprot = 0;
 	descrCfgTx.size = dmaDataSize1;
 	descrCfgTx.srcInc = dmaDataInc1;
-	DMA_CfgDescr(1, true, &descrCfgTx);
-
-	/* Enable Basic Transfer cycle */
-	DMA_ActivateBasic(DMA_CHANNEL,
-	                  true,
-	                  false,
-	                  (void *)&LEUART0->TXDATA,
-	                  (void *)&LEUART0->RXDATA,
-	                  (NUM_TRANSFER-1));
+	DMA_CfgDescr(TX_CHANNEL, true, &descrCfgTx);
 }
 
 /**************************************************************************//**
@@ -191,4 +173,51 @@ void leuartInit() {
 
 	/* Setup DMA */
 	setupDma();
+}
+
+void readNBytes(bool primary, char *buffer, int bytes, void (*funcPtr)(unsigned int channel, bool primary, void *user), void *instance)
+{
+
+	DMA_CfgChannel_TypeDef rxChannelCfg;
+	rx_callback.cbFunc = funcPtr;
+	rx_callback.userPtr = instance;
+	rxChannelCfg.highPri   = false; /* Not useful with peripherals */
+	rxChannelCfg.enableInt = true;  /* Enabling interrupt to refresh DMA cycle*/
+	rxChannelCfg.select = DMAREQ_LEUART0_RXDATAV;
+	rxChannelCfg.cb     = &rx_callback;
+	DMA_CfgChannel(RX_CHANNEL, &rxChannelCfg);
+
+	DMA_CfgDescr_TypeDef   descrCfgRx;
+	descrCfgRx.dstInc = dmaDataInc1;
+	descrCfgRx.srcInc = dmaDataIncNone;
+	descrCfgRx.size   = dmaDataSize1;
+	descrCfgRx.arbRate = dmaArbitrate1;
+	descrCfgRx.hprot   = 0;
+	DMA_CfgDescr(RX_CHANNEL, true, &descrCfgRx);
+
+	DMA_ActivateBasic(RX_CHANNEL,
+	                  primary,
+	                  false,
+	                  (void *)buffer,
+	                  (void *)&LEUART0->RXDATA,
+	                  (bytes-1));
+}
+
+void sendNBytes(bool primary, char *buffer, int bytes, void (*funcPtr)(unsigned int channel, bool primary, void *user), void *instance = NULL)
+{
+	DMA_CfgChannel_TypeDef txChannelCfg;
+	tx_callback.cbFunc = funcPtr;
+	tx_callback.userPtr = instance;
+	txChannelCfg.highPri   = false; /* Not useful with peripherals */
+	txChannelCfg.enableInt = true;  /* Enabling interrupt to refresh DMA cycle*/
+	txChannelCfg.select = DMAREQ_LEUART0_TXBL;
+	txChannelCfg.cb     = &tx_callback;
+	DMA_CfgChannel(TX_CHANNEL, &txChannelCfg);
+
+	DMA_ActivateBasic(TX_CHANNEL,
+	                  primary,
+	                  false,
+	                  (void *)&LEUART0->TXDATA,
+	                  (void *)buffer,
+	                  (bytes-1));
 }

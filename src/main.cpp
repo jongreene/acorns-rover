@@ -1,7 +1,8 @@
 #include "mbed.h"
 #include "PlatformInterface.h"
 #include "Commands.h"
-#include "LUARTHandler.h"
+#include "Connector.h"
+#include "em_emu.h"
 
 //// Required to fix link error inside arm mbed-os
 // fpv4-sp/softfp/libc.a(lib_a-signalr.o): In function `_getpid_r'
@@ -19,7 +20,7 @@ int main() {
 //
 //	auto communicator = new PlatformInterface();
 
-	leuartInit();
+	auto connection = new Connector();
 
 	while (1)
 	{

@@ -32,7 +32,7 @@ set(SOURCES
         core/command-dispatcher/src/UARTHandler.cpp
         core/command-dispatcher/src/PlatformInterface.cpp
         core/ALS31300/ALS31300.cpp
-        )
+        core/command-dispatcher/src/Connector.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
